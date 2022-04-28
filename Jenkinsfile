@@ -1,14 +1,11 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        fileExists 'Jenkinsfile'
-      }
+    agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
     }
-
-  }
-  environment {
-    Build = 'server'
-  }
 }
