@@ -1,10 +1,9 @@
 pipeline {
-    agent { dockerfile true }
+    agent { docker { image 'python:3.10.1-alpine' } }
     stages {
-        stage('Test') {
+        stage('build') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                sh 'python --version'
             }
         }
     }
